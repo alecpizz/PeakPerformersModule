@@ -9,13 +9,20 @@ const Home = () =>
                <button type="button" onClick={(e) =>
                {
                     e.preventDefault();
-                    fetch("http://localhost:5000/mongodb", {
-                         method: "GET"
-                    }).then((response) => response.json()).then((data) =>
+                    try
                     {
-                         console.log(data.message);
-                         setDbText(data.message);
-                    });
+                         fetch("http://localhost:5000/mongodb", {
+                              method: "GET"
+                         }).then((response) => response.json()).then((data) =>
+                         {
+                              console.log(data.message);
+                              setDbText(data.message);
+                         });
+                    }
+                    catch(err)
+                    {
+                         setDbText(err);
+                    }
                }}>Query MongoDB</button>
                <h1>Welcome to CAT 3DCP Digital Marketplace</h1>
                <img src={logo} alt="Caterpillar Logo" width="128" height="128"></img>
