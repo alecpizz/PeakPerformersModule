@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import logo from './cat.jpg';
 
 const Home = () =>
@@ -9,20 +9,20 @@ const Home = () =>
                <button type="button" onClick={(e) =>
                {
                     e.preventDefault();
-                    try
+
+                    fetch("http://localhost:5000/mongodb", {
+                         method: "GET"
+                    }).then((response) => response.json()).then((data) =>
                     {
-                         fetch("http://localhost:5000/mongodb", {
-                              method: "GET"
-                         }).then((response) => response.json()).then((data) =>
-                         {
-                              console.log(data.message);
-                              setDbText(data.message);
-                         });
-                    }
-                    catch(err)
+                         console.log(data.message);
+                         setDbText(data.message);
+                    }).catch((error) =>
                     {
-                         setDbText(err);
-                    }
+                         console.error("Error fetching data:", error);
+                         setDbText(error.message);
+                    });
+
+
                }}>Query MongoDB</button>
                <h1>Welcome to CAT 3DCP Digital Marketplace</h1>
                <img src={logo} alt="Caterpillar Logo" width="128" height="128"></img>
