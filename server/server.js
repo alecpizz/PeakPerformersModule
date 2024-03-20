@@ -14,3 +14,13 @@ app.listen(port, () => {
    });
   console.log(`Server is running on port: ${port}`);
 });
+
+
+app.post('/login', (req, res) =>{
+  console.log(req.body.username) 
+  console.log(req.body.password) 
+})
+
+app.get('/mongodb', (req, res) =>{
+  console.log('yippe');
+})
