@@ -15,9 +15,10 @@ module.exports = {
      await client.connect();
      try
      {
-          await client.db("admin").command({ping: 1});
+          await client.db("peakPerformers").command({ping: 1});
           console.log("Connected to MongodDB!");
-          _db = client.db("admin");
+          var db = client.db("peakPerformers");
+          _db = db.collection("Structures");
      }
      catch(err)
      {
@@ -25,11 +26,42 @@ module.exports = {
      }
      finally
      {
-          client.close();
+          //client.close();
      }
   },
  
   getDb: function () {
     return _db;
   },
+
+  insertStructureInfo: function(structureName, structureDescription, image_main, sub_image){
+     _db.insertOne({
+          structureName: structureName,
+          structureDescription: structureDescription,
+          image_main: image_main,
+          sub_image: sub_image
+     })
+  },
+
+  getStructureInfo: async function(){
+     const structure = await _db.findOne();
+     return structure;
+  },
+
+  updateStructureInfo: function(structureName, structureDescription, image_main, sub_image){
+     _db.updateOne({
+          $set: {
+
+               structureName: structureName,
+               structureDescription: structureDescription,
+               image_main: image_main,
+               sub_image: sub_image
+          },
+          $currentDate: {lastUpdated: true}
+     })
+  },
+
+  deleteStructureInfo: function(){
+     _db.deleteMany({});
+  }
 };
