@@ -43,8 +43,9 @@ module.exports = {
      })
   },
 
-  getStructureInfo: async function(){
-     const structure = await _db.findOne();
+  getStructureInfo: async function(productID){
+     const query = {structureName: productID};
+     const structure = await _db.findOne(query);
      return structure;
   },
 

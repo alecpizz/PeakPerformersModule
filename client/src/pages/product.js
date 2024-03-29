@@ -1,21 +1,26 @@
 import React from "react";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+
 
 const Product = () =>
 {
      const [structureInfo, setStructureInfo] = useState('');
-     fetch("http://localhost:5000/mongodb/structureInfo", {
-          method: "GET"
-     }).then((response) => response.json()).then((data) =>
+
+     let {productId} = useParams();
+
+     const requestOptions = { method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+       body: JSON.stringify({ pageID: {productId}.productId }) };
+
+     fetch("http://localhost:5000/product", requestOptions).then((response) => response.json()).then((data) =>
      {
-          console.log(data);
           setStructureInfo(data);
      }).catch((error) =>
      {
           console.error("Error fetching data:", error);
           setStructureInfo(error.message);
      });
-
 
      return (
           <div>

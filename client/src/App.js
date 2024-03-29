@@ -33,8 +33,8 @@ function App()
                     <Route
                          path="/sign-up"
                          element={<PageFramework component={<SignUp />} />} />
-                    <Route
-                         path="/product"
+                    <Route 
+                         path="/product/:productId"
                          element={<PageFramework component={<Product />} />} />
                </Routes>
           </Router>
