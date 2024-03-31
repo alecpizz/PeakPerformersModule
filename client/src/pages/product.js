@@ -32,8 +32,6 @@ const Product = () =>
                          <li>Main Image: A placeholder image</li>
                          <li>Sub Image: A smaller placeholder image</li>
                     </ul>
-                    <button onClick={() => fetch("http://localhost:5000/mongodb/insert")}>Insert Sample Data</button>
-                    <button onClick={() => fetch("http://localhost:5000/mongodb/delete")}>Delete Data</button>
                     <h1>{structureInfo.structureName}</h1>
                     <p>{structureInfo.structureDescription}</p>
                </div>
