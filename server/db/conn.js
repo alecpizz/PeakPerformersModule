@@ -8,7 +8,8 @@ const client = new MongoClient(URI, {
      }
 });
  
-var _db = null;
+const database = client.db("CAT_3DCP");
+var _db = database.collection("Structures");
  
 module.exports = {
   connectToServer: async function (callback) {
@@ -44,7 +45,7 @@ module.exports = {
   },
 
   getStructureInfo: async function(productID){
-     const query = {structureName: productID};
+     const query = {structureID: productID};
      const structure = await _db.findOne(query);
      return structure;
   },
