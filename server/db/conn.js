@@ -43,10 +43,12 @@ module.exports = {
 //      })
 //   },
 
-  getStructureInfo: async function(productID){
-     const query = {structureID: productID};
-     const structure = await _db.findOne(query);
-     return structure;
+  getStructureInfo: async function(structureID){
+     var query = {structure_id: (structureID)};
+    // console.log(query);
+     var result = await _db.findOne(query);
+    // console.log(result);
+     return result;
   }
 
 //   updateStructureInfo: function(structureName, structureDescription, image_main, sub_image){
