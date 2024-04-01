@@ -45,9 +45,7 @@ module.exports = {
 
   getStructureInfo: async function(structureID){
      var query = {structure_id: (structureID)};
-    // console.log(query);
      var result = await _db.findOne(query);
-    // console.log(result);
      return result;
   }
 
