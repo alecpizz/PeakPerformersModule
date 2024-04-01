@@ -13,8 +13,7 @@ import Contact from "./pages/contact";
 import PageFramework from "./pages/framework";
 import Product from "./pages/product";
 
-function App()
-{
+function App() {
      return (
           <Router>
                <Routes>
@@ -34,7 +33,10 @@ function App()
                          path="/sign-up"
                          element={<PageFramework component={<SignUp />} />} />
                     <Route
-                         path="/product"
+                         path="/product/:productId"
+                         element={<PageFramework component={<Product />} />} />
+                    <Route
+                         path="/product/"
                          element={<PageFramework component={<Product />} />} />
                </Routes>
           </Router>
