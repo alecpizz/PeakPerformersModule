@@ -34,14 +34,6 @@ module.exports = {
     return _db;
   },
 
-//   insertStructureInfo: function(structureName, structureDescription, image_main, sub_image){
-//      _db.insertOne({
-//           structureName: structureName,
-//           structureDescription: structureDescription,
-//           image_main: image_main,
-//           sub_image: sub_image
-//      })
-//   },
 
   getStructureInfo: async function(structureID){
      var query = {structure_id: (structureID)};
@@ -49,20 +41,4 @@ module.exports = {
      return result;
   }
 
-//   updateStructureInfo: function(structureName, structureDescription, image_main, sub_image){
-//      _db.updateOne({
-//           $set: {
-
-//                structureName: structureName,
-//                structureDescription: structureDescription,
-//                image_main: image_main,
-//                sub_image: sub_image
-//           },
-//           $currentDate: {lastUpdated: true}
-//      })
-//   },
-
-//   deleteStructureInfo: function(){
-//      _db.deleteMany({});
-//   }
 };
