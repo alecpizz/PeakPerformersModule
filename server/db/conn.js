@@ -39,6 +39,12 @@ module.exports = {
      var query = {structure_id: (structureID)};
      var result = await _db.findOne(query);
      return result;
+  },
+  
+  getAllStructureInfo: async function(){
+     var query = {structure_type: "house"};
+     var result = await _db.find(query);
+     return result;
   }
 
 };
