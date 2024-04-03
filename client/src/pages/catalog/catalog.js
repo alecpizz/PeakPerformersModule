@@ -78,10 +78,11 @@ const Catalog = () => {
         //console.log("I'm doing stuff");
         let content = [];
         let num = query.length;
+        let link = "http://localhost:3000/product/";
         for (let i = 0; i < num; i++) {
             content.push(
                 <Element>
-                    <h1><Link>{query[i].structure_id}</Link></h1>
+                    <h1><Link href={link + query[i].structure_id}>{query[i].structure_id}</Link></h1>
                     <img src={query[i].images[0]} alt="Alternative Text" />
                     <p><Link href="https://www.cat.com/en_US.html">House Construction Group</Link></p>
                 </Element>

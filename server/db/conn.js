@@ -19,6 +19,8 @@ module.exports = {
           console.log("Connected to MongodDB!");
           var db = client.db("CAT_3DCP");
           _db = db.collection("Structures");
+          var test = await this.getAllStructureInfo();
+          console.log(test);
      }
      catch(err)
      {
@@ -42,8 +44,7 @@ module.exports = {
   },
   
   getAllStructureInfo: async function(){
-     var query = {structure_type: "house"};
-     var result = await _db.find(query);
+     var result = await _db.find().toArray();
      return result;
   }
 
