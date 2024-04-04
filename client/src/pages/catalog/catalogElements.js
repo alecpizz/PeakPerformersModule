@@ -38,6 +38,13 @@ export const Link = styled.a`
     }
 `;
 
+export const Img = styled.img`
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+`;
+
 export const Footer = styled.div`
     padding: 10px;
     grid-area: f;

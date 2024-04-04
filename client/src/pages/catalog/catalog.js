@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { CatalogPage, Tags, Results, Element, Link, Footer } from "./catalogElements";
+import { CatalogPage, Tags, Results, Element, Link, Img, Footer } from "./catalogElements";
 
 const Catalog = () => {
     //const initialMyArray = JSON.parse(localStorage.getItem("myArray")) || ['a', 'b', 'c', 'd', 'e'];
@@ -83,7 +83,7 @@ const Catalog = () => {
             content.push(
                 <Element>
                     <h1><Link href={link + query[i].structure_id}>{query[i].structure_id}</Link></h1>
-                    <img src={query[i].images[0]} alt="Alternative Text" />
+                    <Img src={query[i].images[0]} alt="Alternative Text" />
                     <p><Link href="https://www.cat.com/en_US.html">House Construction Group</Link></p>
                 </Element>
             );
