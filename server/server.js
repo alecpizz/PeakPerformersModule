@@ -7,6 +7,8 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+const catalogRouter = require('./routes/catalog')
 // get driver connection
 
 const dbo = require("./db/conn");
@@ -27,6 +29,8 @@ app.listen(port, () =>
      }
 
 });
+
+app.use('/catalog', catalogRouter);
 
 
 app.post('/product', async (req, res) =>
