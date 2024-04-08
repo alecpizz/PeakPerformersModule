@@ -47,7 +47,7 @@ app.post('/product', async (req, res) =>
           }
           else
           {
-               res.send(info);
+               res.send(JSON.stringify(info));
           }
      }
      else
