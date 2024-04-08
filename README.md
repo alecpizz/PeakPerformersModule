@@ -7,7 +7,7 @@ Clone the repository. Make sure you have Node.js installed and NPM. You will als
 # Running
 
 ## To start the client:
-Navigate to the client directory in a terminal. Run 'npm start'. The client will start up. Run 'npm init' if needed.
+Navigate to the client directory in a terminal. Run 'npm start'. The client will start up. Run 'npm init' if needed. May also need to run 'npm install react-scripts --save'
 
 ## To start the server:
 The server will not operate properly if there is no MongoDB instance setup. To link the MongoDB instance, navigate to the server directory, and then modify

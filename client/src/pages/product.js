@@ -2,9 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-
 const Product = () => {
-     const [structureInfo, setStructureInfo] = useState('');
+    const [structureInfo, setStructureInfo] = useState('');
+    const [open, setOpen] = useState(false);
 
      let { productId } = useParams();
 
@@ -31,10 +31,29 @@ const Product = () => {
                <div>
                     <img src={structureInfo.image_main}></img>
                </div>
-               <img src={structureInfo.sub_image}></img>
+             <img src={structureInfo.sub_image}></img>
+             <div className='menu-container'>
+                 <div className='menu-trigger' onClick={() => {setOpen(!open) } }>
+                    <h4>Dropdown</h4>
+                 </div>
+                 <div className={`dropdown-menu ${open? 'active' : 'inactive' }`}>
+                     <ul>
+                         <DropdownItem text={"dropdown 1"} />
+                         <DropdownItem text={"dropdown 2"} />
+                         <DropdownItem text={"dropdown 3"} />
+                     </ul>
+                 </div>
+             </div>
           </div>
-
      );
 };
+
+function DropdownItem(props) {
+    return (
+        <li className = 'dropdownItem'>
+            <a> {props.text} </a>
+        </li>
+    );
+}
 
 export default Product;
