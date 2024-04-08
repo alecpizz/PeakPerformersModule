@@ -47,6 +47,7 @@ const Product = () => {
                     <img src={mainImage}></img>
                </div>
              <img src={images[1]}></img>
+             <div><h5>Product description</h5></div>
              <div className='menu-container'>
                  <div className='menu-trigger' onClick={() => {setOpen(!open) } }>
                     <h4>Click for Options</h4>
