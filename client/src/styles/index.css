@@ -14,7 +14,7 @@ code {
 :root {
     --bg: #242526;
     --bg-accent: #484a4d;
-    --text-color: #dadce1;
+    --text-color: #000000;
     --nav-size: 60px;
     --border: 1px solid #474a4d;
     --speed: 500ms;
