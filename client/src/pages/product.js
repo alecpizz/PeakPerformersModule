@@ -88,7 +88,13 @@ const Product = () => {
      });
     });
 
-
+    function createDropDown(){
+         let items = [];
+         for(let i = 0; i < options.length; i++){
+              items.push(<DropdownItem text={options[i]} />);
+          }
+          return items;
+     }
     // var images = structureInfo.images[0];
      //images = images.split("https").map(x => {return "https" + x}).slice(1);
     
@@ -115,10 +121,7 @@ const Product = () => {
                  </div>
                  <div className={`dropdown-menu ${open? 'active' : 'inactive' }`}>
                      <ul>
-                         <DropdownItem text={options[0]} />
-                         <DropdownItem text={options[1]} />
-                         <DropdownItem text={options[2]} />
-                         <DropdownItem text={options[3]} />
+                         {createDropDown()}
                      </ul>
                  </div>
              </div>
