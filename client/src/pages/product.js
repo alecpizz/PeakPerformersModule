@@ -2,9 +2,6 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-import image1 from './Building1.jpg';
-import image2 from './Building2.jpg';
-import image3 from './Building3.jpg';
 
 const Product = () => {
 
@@ -47,7 +44,7 @@ const Product = () => {
           <button onClick={this.handlePrevClick}>Previous</button>
           <button onClick={this.toggleMagnification}>{isMagnified ? 'Shrink' : 'Magnify'}</button>
           <img
-            src={image[currentIndex]}
+            src={images[currentIndex]}
             alt={`Image ${currentIndex + 1}`}
             className={isMagnified ? 'magnified' : ''}
           />
@@ -57,11 +54,6 @@ const Product = () => {
     }
   }
 
-  const image = [
-    image1,
-    image2,
-    image3
-  ];
 
      let { productId } = useParams();
      const [options, setOptions] = useState('');
@@ -100,18 +92,17 @@ const Product = () => {
     
      return (
           <div>
+                                <div>
+                    <h2>Image Gallery</h2>
+                     <ImageGallery images={images} />
+                    </div>
                <div>
                     <h1>{{ productId }.productId}</h1>
                     <h1>{structureInfo.structure_type}</h1>
                     <p>Price ${price}</p>
                     <p>Created by: {structureInfo.user_id}</p>
-                    <div>
-                    <h2>Image Gallery</h2>
-                     <ImageGallery images={image} />
-                    </div>
                </div>
                <div>
-                    <img src={mainImage}></img>
                </div>
                <img src={structureInfo.sub_image}></img>
                <img src={images[1]}></img>
