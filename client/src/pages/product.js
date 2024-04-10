@@ -60,6 +60,7 @@ const Product = () => {
      const [price, setPrice] = useState('');
      const [images, setImages] = useState('');
      const [mainImage, setMainImage] = useState('');
+     const [dataReceived, setDataReceived] = useState(false);
    
      useEffect(() => {
      const requestOptions = {
@@ -70,6 +71,7 @@ const Product = () => {
 
      fetch("http://localhost:5000/product", requestOptions).then((response) => response.json()).then((data) => {
           setStructureInfo(data);
+          setDataReceived(true);
           setOptions([data.custom_options[0], data.custom_options[1], data.custom_options[2], data.custom_options[3]]);
           setPrice(data.price[0]);
           setImages(data.images);
@@ -77,6 +79,7 @@ const Product = () => {
         }).catch((error) => {
           console.error("Error fetching data:", error);
           setStructureInfo(error.message);
+          setDataReceived(false);
      });
     });
 
@@ -90,6 +93,10 @@ const Product = () => {
     // var images = structureInfo.images[0];
      //images = images.split("https").map(x => {return "https" + x}).slice(1);
     
+     if(!dataReceived)
+     {
+          return (<div><h1>Product not found, please check your URL or contact support.</h1></div>)
+     }
      return (
           <div>
                                 <div>
