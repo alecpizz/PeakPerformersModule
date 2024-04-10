@@ -22,23 +22,50 @@ code {
 
 ul {
     list-style: none;
-    margin: 0;
+    margin: 0, 0, 0, 100px;
     padding: 0;
 }
 
 a {
     color: var(--text-color);
     text-decoration: none;
+    margin-left: 100px;
+}
+
+p {
+    margin-left: 20px;
+}
+
+h1 {
+    margin-left: 20px;
+}
+
+h2 {
+    margin-left: 20px;
+}
+
+h3 {
+    margin-left: 20px;
+}
+
+h4 {
+    margin-left: 20px;
+}
+
+img {
+    margin-left: 20px;
 }
 
 .dropdown-menu ul li{
     padding: 10px 0;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
+    margin-left: 20px;
 }
 
 .dropdown-menu ul li:hover a{
     color: rgb(212, 33, 0);
     cursor: pointer;
+    margin-left: 20px;
 }
 
 .dropdownItem{
