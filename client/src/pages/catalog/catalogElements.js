@@ -3,9 +3,17 @@ import styled from "styled-components";
 export const CatalogPage = styled.div`
     display: grid;
     grid-template-areas:
+        "s s"
         "t r"
         "t f";
     justify-content: start;
+`;
+
+export const Search = styled.div`
+    overflow: auto;
+    padding: 10px;
+    margin-left: 330px;
+    grid-area: s;
 `;
 
 export const Tags = styled.div`
@@ -45,7 +53,18 @@ export const Img = styled.img`
     margin-right: auto;
 `;
 
-export const Footer = styled.div`
+export const NumResults = styled.div`
     padding: 10px;
+    margin-bottom: 85px;
     grid-area: f;
+`;
+
+export const Footer = styled.footer`
+    background-color: #ffc107;
+    padding: 1rem;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0; /* Align to the left side of the viewport */
+    width: 100%; /* Spread across the entire width of the viewport */
 `;

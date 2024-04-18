@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
-import { CatalogPage, Tags, Results, Element, Link, Img, Footer } from "./catalogElements";
+import { CatalogPage, Search, Tags, Results, Element, Link, Img, NumResults, Footer } from "./catalogElements";
+import SearchBar from '../../components/SearchBar';
 
 const Catalog = () => {
     //const initialMyArray = JSON.parse(localStorage.getItem("myArray")) || ['a', 'b', 'c', 'd', 'e'];
@@ -8,6 +9,7 @@ const Catalog = () => {
     //const [counter, setCounter] = useState(parseInt(localStorage.getItem("counter")) || 0);
     //const [arrayChanged, setArrayChanged] = useState(false);
     const [ numElements, setCount ] = useState(0);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         fetch("http://localhost:5000/catalog/", {
@@ -22,18 +24,19 @@ const Catalog = () => {
             setQuery(data);
             setCount(data.length);
             console.log("IN fetch: ", query);
+            setError('');
         })
         .catch((error) => {
             console.error("Error fetching data:", error);
+            setError('An error occurred while fetching data.');
         });
         //console.log("OUT fetch", query);
     }, []);
 
-    const search = () => {
-        //setQuery(getQuery());
-        //setCount(query.length);
-        //console.log(query);
-    }
+    const handleSubmit = async (query) => {
+        console.log("Please implement me!");
+        // Hello backend people!
+    };
 
     /*const handleClick = () => {
         if (arrayChanged) {
@@ -127,16 +130,22 @@ const Catalog = () => {
 
     return (
         <CatalogPage>
+            <Search>
+                <SearchBar onSubmit={handleSubmit} />
+                {error && <p className="error">{error}</p>}
+            </Search>
             <Tags>
                 <h1><Link>Tag 1</Link></h1>
                 <h1><Link>Tag 2</Link></h1>
-                <h1><Link onClick={() => {search()}}>Search</Link></h1>
             </Tags>
             <Results>
                 {renderElements()}
             </Results>
-            <Footer>
+            <NumResults>
                 <p>Results Displayed: {numElements}</p>
+            </NumResults>
+            <Footer>
+                <p>CAT 3DCP Teams Peak Performers, Screen Warriors, and Kryptonite</p>
             </Footer>
         </CatalogPage>
     );

@@ -1,7 +1,7 @@
 import { FaBars } from "react-icons/fa";
 import { NavLink as Link } from "react-router-dom";
 import styled from "styled-components";
- 
+
 export const Nav = styled.nav`
     background: #ffc700;
     height: 85px;
@@ -10,7 +10,7 @@ export const Nav = styled.nav`
     padding: 0.2rem calc((100vw - 1000px) / 2);
     z-index: 12;
 `;
- 
+
 export const NavLink = styled(Link)`
     color: #000000;
     display: flex;
@@ -37,7 +37,7 @@ export const Bars = styled(FaBars)`
         cursor: pointer;
     }
 `;
- 
+
 export const NavMenu = styled.div`
     display: flex;
     align-items: center;
@@ -50,4 +50,10 @@ white-space: nowrap; */
     @media screen and (max-width: 768px) {
         display: none;
     }
+`;
+
+export const Img = styled.img`
+    height: 250px; /* You can set the height as needed */
+    display: block;
+    margin: 0 auto; /* Center the image horizontally */
 `;
