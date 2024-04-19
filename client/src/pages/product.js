@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
 const Product = () => {
@@ -99,7 +99,7 @@ const Product = () => {
      }
      return (
           <div>
-                                <div>
+          <div>
                     <h2>Image Gallery</h2>
                      <ImageGallery images={images} />
                     </div>
@@ -108,6 +108,7 @@ const Product = () => {
                     <h1>{structureInfo.structure_type}</h1>
                     <p>Price ${price}</p>
                     <p>Created by: {structureInfo.user_id}</p>
+                    <Link to={`/seller?=${structureInfo.user_id}`}>Click to see more structures by the creator</Link>
                </div>
                <div>
                </div>
