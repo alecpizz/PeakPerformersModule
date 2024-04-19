@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import ReactImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
 
 
 const Product = () => {
@@ -8,51 +10,51 @@ const Product = () => {
   const [structureInfo, setStructureInfo] = useState('');
   const [open, setOpen] = useState(false);
   
-  class ImageGallery extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        currentIndex: 0,
-        isMagnified: false
-      };
-    }
+//   class ImageGallery extends React.Component {
+//     constructor(props) {
+//       super(props);
+//       this.state = {
+//         currentIndex: 0,
+//         isMagnified: false
+//       };
+//     }
   
-    handlePrevClick = () => {
-      this.setState(prevState => ({
-        currentIndex: prevState.currentIndex > 0 ? prevState.currentIndex - 1 : this.props.images.length - 1
-      }));
-    };
+//     handlePrevClick = () => {
+//       this.setState(prevState => ({
+//         currentIndex: prevState.currentIndex > 0 ? prevState.currentIndex - 1 : this.props.images.length - 1
+//       }));
+//     };
   
-    handleNextClick = () => {
-      this.setState(prevState => ({
-        currentIndex: prevState.currentIndex < this.props.images.length - 1 ? prevState.currentIndex + 1 : 0
-      }));
-    };
+//     handleNextClick = () => {
+//       this.setState(prevState => ({
+//         currentIndex: prevState.currentIndex < this.props.images.length - 1 ? prevState.currentIndex + 1 : 0
+//       }));
+//     };
   
-    toggleMagnification = () => {
-      this.setState(prevState => ({
-        isMagnified: !prevState.isMagnified
-      }));
-    };
+//     toggleMagnification = () => {
+//       this.setState(prevState => ({
+//         isMagnified: !prevState.isMagnified
+//       }));
+//     };
   
-    render() {
-      const { images } = this.props;
-      const { currentIndex, isMagnified } = this.state;
+//     render() {
+//       const { images } = this.props;
+//       const { currentIndex, isMagnified } = this.state;
   
-      return (
-        <div className="image-gallery">
-          <button onClick={this.handlePrevClick}>Previous</button>
-          <button onClick={this.toggleMagnification}>{isMagnified ? 'Shrink' : 'Magnify'}</button>
-          <img
-            src={images[currentIndex]}
-            alt={`Image ${currentIndex + 1}`}
-            className={isMagnified ? 'magnified' : ''}
-          />
-          <button onClick={this.handleNextClick}>Next</button>
-        </div>
-      );
-    }
-  }
+//       return (
+//         <div className="image-gallery">
+//           <button onClick={this.handlePrevClick}>Previous</button>
+//           <button onClick={this.toggleMagnification}>{isMagnified ? 'Shrink' : 'Magnify'}</button>
+//           <img
+//             src={images[currentIndex]}
+//             alt={`Image ${currentIndex + 1}`}
+//             className={isMagnified ? 'magnified' : ''}
+//           />
+//           <button onClick={this.handleNextClick}>Next</button>
+//         </div>
+//       );
+//     }
+//   }
 
 
      let { productId } = useParams();
@@ -74,7 +76,11 @@ const Product = () => {
           setDataReceived(true);
           setOptions([data.custom_options[0], data.custom_options[1], data.custom_options[2], data.custom_options[3]]);
           setPrice(data.price[0]);
-          setImages(data.images);
+          let items = [];
+          for(let i = 0; i < data.images.length; i++){
+               items.push({original: data.images[i]});
+          }
+          setImages(items);
           setMainImage(data.images[0]);
         }).catch((error) => {
           console.error("Error fetching data:", error);
@@ -92,6 +98,10 @@ const Product = () => {
      }
     // var images = structureInfo.images[0];
      //images = images.split("https").map(x => {return "https" + x}).slice(1);
+
+     const RedirectButton = () => {
+          return <button>Text</button>
+     }
     
      if(!dataReceived)
      {
@@ -99,20 +109,20 @@ const Product = () => {
      }
      return (
           <div>
-                                <div>
+               <h1>{{ productId }.productId}</h1>
+               <h1>Product Type: {structureInfo.structure_type}</h1>
+               <p>Price ${price}</p>
+               <p>Created by: {structureInfo.user_id}</p>
+               <Link to={`/seller?=${structureInfo.user_id}`} component={RedirectButton}>Click to see more structures by the creator</Link>
+               <div className="imageGallery">
                     <h2>Image Gallery</h2>
-                     <ImageGallery images={images} />
+                    <ReactImageGallery items={images} showFullscreenButton={false} showPlayButton={false}></ReactImageGallery>
                     </div>
                <div>
-                    <h1>{{ productId }.productId}</h1>
-                    <h1>{structureInfo.structure_type}</h1>
-                    <p>Price ${price}</p>
-                    <p>Created by: {structureInfo.user_id}</p>
                </div>
                <div>
                </div>
-               <img src={structureInfo.sub_image}></img>
-               <img src={images[1]}></img>
+
              <div className='menu-container'>
                  <div className='menu-trigger' onClick={() => {setOpen(!open) } }>
                     <h4>Click for Options</h4>

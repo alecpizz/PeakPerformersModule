@@ -65,3 +65,8 @@ a {
     transform: translateY(-20px);
     transition: var(--speed) ease;
 }
+
+.imageGallery {
+     width: 50%;
+     height: 50%;
+}
