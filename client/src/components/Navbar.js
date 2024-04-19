@@ -1,11 +1,13 @@
 import React from "react";
-import { Nav, NavLink, NavMenu } from "./NavbarElements";
- 
+import { Nav, NavLink, NavMenu, Img } from "./NavbarElements";
+import caterpillarLogo from './caterpillar_logo.png';
+
 const Navbar = () => {
     return (
         <Nav>
             <NavMenu>
-            <NavLink to="/" activeStyle>
+                <Img src={caterpillarLogo} alt="Caterpillar Logo" />
+                <NavLink to="/" activeStyle>
                     Home
                 </NavLink>
                 <NavLink to="/catalog" activeStyle>
