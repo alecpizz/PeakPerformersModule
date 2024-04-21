@@ -9,53 +9,6 @@ const Product = () => {
 
   const [structureInfo, setStructureInfo] = useState('');
   const [open, setOpen] = useState(false);
-  
-//   class ImageGallery extends React.Component {
-//     constructor(props) {
-//       super(props);
-//       this.state = {
-//         currentIndex: 0,
-//         isMagnified: false
-//       };
-//     }
-  
-//     handlePrevClick = () => {
-//       this.setState(prevState => ({
-//         currentIndex: prevState.currentIndex > 0 ? prevState.currentIndex - 1 : this.props.images.length - 1
-//       }));
-//     };
-  
-//     handleNextClick = () => {
-//       this.setState(prevState => ({
-//         currentIndex: prevState.currentIndex < this.props.images.length - 1 ? prevState.currentIndex + 1 : 0
-//       }));
-//     };
-  
-//     toggleMagnification = () => {
-//       this.setState(prevState => ({
-//         isMagnified: !prevState.isMagnified
-//       }));
-//     };
-  
-//     render() {
-//       const { images } = this.props;
-//       const { currentIndex, isMagnified } = this.state;
-  
-//       return (
-//         <div className="image-gallery">
-//           <button onClick={this.handlePrevClick}>Previous</button>
-//           <button onClick={this.toggleMagnification}>{isMagnified ? 'Shrink' : 'Magnify'}</button>
-//           <img
-//             src={images[currentIndex]}
-//             alt={`Image ${currentIndex + 1}`}
-//             className={isMagnified ? 'magnified' : ''}
-//           />
-//           <button onClick={this.handleNextClick}>Next</button>
-//         </div>
-//       );
-//     }
-//   }
-
 
      let { productId } = useParams();
      const [options, setOptions] = useState('');
@@ -109,19 +62,15 @@ const Product = () => {
      }
      return (
           <div>
-               <h1>{{ productId }.productId}</h1>
+               <p className="imageGallery">
+                    <ReactImageGallery items={images} autoPlay={true} showFullscreenButton={true} showPlayButton={false}></ReactImageGallery>
+                    </p>
+                    <h2 id="h2">Available in your area</h2>
+               <h1>Product Id: {{ productId }.productId}</h1>
                <h1>Product Type: {structureInfo.structure_type}</h1>
+               <p>By: {structureInfo.user_id}</p>
+               <Link to={`/seller?=${structureInfo.user_id}`} component={RedirectButton} class="hyperlink">Click to see more structures by the creator</Link>
                <p>Price ${price}</p>
-               <p>Created by: {structureInfo.user_id}</p>
-               <Link to={`/seller?=${structureInfo.user_id}`} component={RedirectButton}>Click to see more structures by the creator</Link>
-               <div className="imageGallery">
-                    <h2>Image Gallery</h2>
-                    <ReactImageGallery items={images} showFullscreenButton={false} showPlayButton={false}></ReactImageGallery>
-                    </div>
-               <div>
-               </div>
-               <div>
-               </div>
 
              <div className='menu-container'>
                  <div className='menu-trigger' onClick={() => {setOpen(!open) } }>

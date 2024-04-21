@@ -67,6 +67,37 @@ a {
 }
 
 .imageGallery {
+    margin-top: 0.5%;
+    margin-left: 1.5%;
      width: 50%;
      height: 50%;
+     border-radius: 30px;
+     float: left;
+}
+
+.hyperlink {
+    text-decoration: underline;
+    color: #474a4d;
+}
+
+#h2 {
+    margin-left: 55%;
+    border-radius: 25px;
+    background: #d6faa5;
+    padding: 20px; 
+    width: 250px;
+    height: 35px;  
+}
+
+#p1 {
+    display:inline;
+    margin-top: 50px;
+ }
+
+#p2 {
+    display:inline;
+}
+
+#div1 {
+    display:inline
 }
