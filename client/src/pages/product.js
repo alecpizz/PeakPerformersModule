@@ -66,11 +66,11 @@ const Product = () => {
                     <ReactImageGallery items={images} autoPlay={true} showFullscreenButton={true} showPlayButton={false}></ReactImageGallery>
                     </p>
                     <h2 id="h2">Available in your area</h2>
-               <h1>Product Id: {{ productId }.productId}</h1>
-               <h1>Product Type: {structureInfo.structure_type}</h1>
-               <p>By: {structureInfo.user_id}</p>
+                    <h1 id ="pro_type">Product Type: {structureInfo.structure_type}</h1>             
+               <p id="p1">By: </p>
                <Link to={`/seller?=${structureInfo.user_id}`} component={RedirectButton} class="hyperlink">Click to see more structures by the creator</Link>
                <p>Price ${price}</p>
+               <p id="pro_id">Product Id: {{ productId }.productId}</p>  
 
              <div className='menu-container'>
                  <div className='menu-trigger' onClick={() => {setOpen(!open) } }>

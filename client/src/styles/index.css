@@ -81,7 +81,7 @@ a {
 }
 
 #h2 {
-    margin-left: 55%;
+    margin-left: 54%;
     border-radius: 25px;
     background: #d6faa5;
     padding: 20px; 
@@ -89,9 +89,23 @@ a {
     height: 35px;  
 }
 
+#pro_type{
+    margin-left: 53%;
+    font-weight: bold;
+    line-height: 2px;
+}
+
+#pro_id {
+    margin-left: 53%;
+    color:#484a4d;
+}
+
+#by {
+    margin-left: 53%;
+}
+
 #p1 {
     display:inline;
-    margin-top: 50px;
  }
 
 #p2 {
@@ -99,5 +113,5 @@ a {
 }
 
 #div1 {
-    display:inline
+    display:inline;
 }
