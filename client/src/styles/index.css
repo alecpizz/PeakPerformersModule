@@ -78,15 +78,17 @@ a {
 .hyperlink {
     text-decoration: underline;
     color: #474a4d;
+    line-height: 33px;
 }
 
 #h2 {
-    margin-left: 54%;
+    margin-left: 75%;
     border-radius: 25px;
     background: #d6faa5;
-    padding: 20px; 
+    padding: 15px; 
     width: 250px;
-    height: 35px;  
+    height: 35px;
+    line-height: 33px;
 }
 
 #pro_type{
@@ -100,18 +102,38 @@ a {
     color:#484a4d;
 }
 
-#by {
-    margin-left: 53%;
-}
-
 #p1 {
+    margin-left: 1.8%;
     display:inline;
  }
 
-#p2 {
+ #p2 {
+    margin-left: 1.8%;
     display:inline;
-}
+ }
+   
+  .star {
+    font-size: 3vh;
+    cursor: pointer;
+  }
 
-#div1 {
-    display:inline;
-}
+  .cartbut {
+    background-color: #ffc700; /* Green */
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  #prostuff {
+    margin-left: 5%;
+    line-height: 5px;
+  }
+
+  #prodisc {
+    margin-left: 5%;
+  }

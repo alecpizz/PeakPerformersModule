@@ -4,7 +4,6 @@ import { Link, useParams } from "react-router-dom";
 import ReactImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 
-
 const Product = () => {
 
   const [structureInfo, setStructureInfo] = useState('');
@@ -66,15 +65,21 @@ const Product = () => {
                     <ReactImageGallery items={images} autoPlay={true} showFullscreenButton={true} showPlayButton={false}></ReactImageGallery>
                     </p>
                     <h2 id="h2">Available in your area</h2>
-                    <h1 id ="pro_type">Product Type: {structureInfo.structure_type}</h1>             
-               <p id="p1">By: </p>
+                    <p id="pro_id">Product Id: {{ productId }.productId}</p>  
+                    <h1 id ="pro_type">Product Type: {structureInfo.structure_type}</h1> 
+                    <p1 id="p1">By: </p1>            
                <Link to={`/seller?=${structureInfo.user_id}`} component={RedirectButton} class="hyperlink">Click to see more structures by the creator</Link>
-               <p>Price ${price}</p>
-               <p id="pro_id">Product Id: {{ productId }.productId}</p>  
-
+               <div class="card">
+        <h3 id="p2">Rating: </h3>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+    </div>
              <div className='menu-container'>
                  <div className='menu-trigger' onClick={() => {setOpen(!open) } }>
-                    <h4>Click for Options</h4>
+                    <h4 id="p1">Click for Options</h4>
                  </div>
                  <div className={`dropdown-menu ${open? 'active' : 'inactive' }`}>
                      <ul>
@@ -82,7 +87,11 @@ const Product = () => {
                      </ul>
                  </div>
              </div>
-          </div>
+             <h1 id = "p1">Price ${price}  </h1>
+             <button class ="cartbut"><Link to={`/cart?=${structureInfo.cart}`} component={RedirectButton}>Add to cart</Link></button>
+             <h1 id="prostuff">From the Designer:</h1>
+             <p id="prodisc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sem libero, fringilla in bibendum ut, iaculis sed nunc. Duis quam nunc, placerat eget maximus et, laoreet quis massa. Duis porta congue hendrerit. Nam condimentum tempus ligula, a sagittis libero. Nullam hendrerit velit ac justo ultrices, quis faucibus nulla vehicula. Morbi ornare mi ac odio suscipit dictum. Aenean vel pellentesque dolor. Suspendisse potenti. Fusce ac sagittis orci. Aenean eget tristique sem. Ut vitae mauris augue.</p>
+     </div>
 
      );
 };
