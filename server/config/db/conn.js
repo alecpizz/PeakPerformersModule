@@ -19,8 +19,6 @@ module.exports = {
           console.log("Connected to MongodDB!");
           var db = client.db("CAT_3DCP");
           _db = db.collection("Structures");
-          var test = await this.getAllStructureInfo();
-          console.log(test);
      }
      catch(err)
      {
@@ -35,17 +33,4 @@ module.exports = {
   getDb: function () {
     return _db;
   },
-
-
-  getStructureInfo: async function(structureID){
-     var query = {structure_id: (structureID)};
-     var result = await _db.findOne(query);
-     return result;
-  },
-  
-  getAllStructureInfo: async function(){
-     var result = await _db.find().toArray();
-     return result;
-  }
-
 };
