@@ -79,8 +79,8 @@ const Product = () => {
                     <h2 id="h2">Available in your area</h2>
                     <p id="pro_id">Product Id: {{ productId }.productId}</p>  
                     <h1 id ="pro_type">Product Type: {structureInfo.structure_type}</h1> 
-                    <p1 id="p1">By: </p1>            
-               <Link to={`/seller?=${structureInfo.user_id}`} component={RedirectButton} class="hyperlink">Click to see more structures by the creator</Link>
+                    <p1 id="p1">By: {structureInfo.user_id} </p1>            
+               <Link to={`/seller?=${structureInfo.user_id}`} component={RedirectButton} class="hyperlink">Click here to see more structures by the creator</Link>
                <div class="card">
         <h3 id="p2">Rating: </h3>
         <span class="star">★</span>
