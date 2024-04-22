@@ -34,7 +34,7 @@ module.exports = router
 const express = require('express')
 const router = express.Router()
 const House = require('../models/house')
-const dbo = require("../config/db/conn")
+const dbo = require("../db/conn")
 //GEt all
 /*
 router.get("/", async (req, res) => {
@@ -50,12 +50,6 @@ router.get("/", async (req, res) => {
         res.status(500).json( { message: err.message } )
     }
 }) */
-
-async function getAllStructureInfo(){
-     var result = await dbo.getDb().find().toArray();
-     return result;
-  }
-
 //Get all entries of the database
 router.post("/", async (req, res) => {
     //const wasd = await House.findOne({ structure_type: "house"}, { _id: 1 });
@@ -71,9 +65,32 @@ router.post("/", async (req, res) => {
         //const testArray = [wasd, wasd2]
         //res.status(201).json(wasd);
         //res.status(201).json(wasd);
-        const allTheThings = await getAllStructureInfo();
+        const allTheThings = await dbo.getAllStructureInfo();
        // console.log(allTheThings);
         res.status(201).json(allTheThings);
+    }catch(err) {
+        res.status(400).json( { message: err.message } )
+    }
+})
+
+router.post("/1", async (req, res) => {
+    //const wasd = await House.findOne({ structure_type: "house"}, { _id: 1 });
+    const reqBody = req.body;
+    // if(reqBody == 1) {
+    //     console.log("This is when tag 1 vale == 1");
+    //     const wasd = await House.find( {structure_type: "house"}).limit(3);
+    //     res.status(201).json(wasd);
+    // }
+    try {
+        const structures = await dbo.getUniqueStructureInfo(reqBody);
+        //const wasd = await House.find();
+        //const wasd2 = await House.findOne({ structure_id: 4});
+        //const testArray = [wasd, wasd2]
+        //res.status(201).json(wasd);
+        //res.status(201).json(wasd);
+        //const allTheThings = await dbo.getAllStructureInfo();
+       // console.log(allTheThings);
+        res.status(201).json(structures);
     }catch(err) {
         res.status(400).json( { message: err.message } )
     }
@@ -163,5 +180,27 @@ router.post("/:id", async (req, res) => {
     }
 })
 */
+
+router.get('/', async (req, res) => {
+    const query = req.query.q;
+    try {
+      // Search for documents that match the query
+      const structures = await dbo.getOneStructureInfo();
+      /*
+      const structures = await Structure.find({
+        $or: [
+          { structure_id: query },
+          { structure_type: query },
+          { user_id: query },
+          { tags: query }
+        ]
+      });
+      */
+      res.json(structures);
+    } catch (error) {
+      console.error('Error searching structures:', error);
+      res.status(500).json({ error: 'An error occurred while searching structures' });
+    }
+  });
 
 module.exports = router

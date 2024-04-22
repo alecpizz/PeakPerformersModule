@@ -1,17 +1,19 @@
 import React, {useState, useEffect} from "react";
 import { CatalogPage, Search, Tags, Results, Element, Link, Img, NumResults, Footer } from "./catalogElements";
 import SearchBar from '../../components/SearchBar';
+import axios from 'axios';
 
 const Catalog = () => {
     //const initialMyArray = JSON.parse(localStorage.getItem("myArray")) || ['a', 'b', 'c', 'd', 'e'];
     //const [myArray, setMyArray] = useState(initialMyArray);
-    const [query, setQuery] = useState([]);
+    //const [query, setQuery] = useState([]);
     //const [counter, setCounter] = useState(parseInt(localStorage.getItem("counter")) || 0);
     //const [arrayChanged, setArrayChanged] = useState(false);
     const [ numElements, setCount ] = useState(0);
     const [error, setError] = useState('');
+    const [results, setResults] = useState([]);
 
-    useEffect(() => {
+    /*useEffect(() => {
         fetch("http://localhost:5000/catalog/", {
             method: "POST",
             headers: {
@@ -31,12 +33,57 @@ const Catalog = () => {
             setError('An error occurred while fetching data.');
         });
         //console.log("OUT fetch", query);
-    }, []);
+    }, []);*/
 
     const handleSubmit = async (query) => {
-        console.log("Please implement me!");
-        // Hello backend people!
+        try {
+            setResults([]);
+            //const response = await axios.get(`http://localhost:5000/structures?q=${query}`);
+            /*const response = await axios.get(`http://localhost:5000/catalog`);
+            if (response.data.length === 0) {
+                setError('No results found for the specified query.');
+            } else {
+                setResults(response.data);
+                setError('');
+                //console.log("IN fetch: ", response.data);
+            }*/
+
+            fetch("http://localhost:5000/catalog/1", {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json",
+                },
+                body: JSON.stringify({query}),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                setResults(data);
+                console.log(data);
+                console.log("Q", query);
+            });
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            setError('An error occurred while fetching data.');
+        }
     };
+
+    /*const handleSubmit = async (query) => {
+        try {
+            setResults([]);
+            //const response = await axios.get(`http://localhost:5000/structures?q=${query}`);
+            const response = await axios.get(`http://localhost:5000/catalog`);
+            if (response.data.length === 0) {
+                setError('No results found for the specified query.');
+            } else {
+                setResults(response.data);
+                setError('');
+                //console.log("IN fetch: ", response.data);
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            setError('An error occurred while fetching data.');
+        }
+    };*/
 
     /*const handleClick = () => {
         if (arrayChanged) {
@@ -80,17 +127,33 @@ const Catalog = () => {
     const renderElements = () => {
         //console.log("I'm doing stuff");
         let content = [];
-        let num = query.length;
+        let num = results.length;
         let link = "http://localhost:3000/product/";
-        for (let i = 0; i < num; i++) {
+        console.log("RENDER 1: ", results);
+        console.log("RENDER 1.1: ", results.structure_id);
+        console.log("RENDER 2: ", num);
+        if (num === undefined) {
+            console.log("RENDER 3: ", results);
             content.push(
                 <Element>
-                    <h1><Link href={link + query[i].structure_id}>{query[i].structure_id}</Link></h1>
-                    <Img src={query[i].images[0]} alt="Alternative Text" />
+                    <h1><Link href={link + results.structure_id}>{results.structure_id}</Link></h1>
+                    <Img src={results.images[0]} alt="Alternative Text" />
                     <p><Link href="https://www.cat.com/en_US.html">House Construction Group</Link></p>
                 </Element>
             );
+        } else {
+            for (let i = 0; i < num; i++) {
+                console.log("RENDER 3: ", results[i]);
+                content.push(
+                    <Element>
+                        <h1><Link href={link + results[i].structure_id}>{results[i].structure_id}</Link></h1>
+                        <Img src={results[i].images[0]} alt="Alternative Text" />
+                        <p><Link href="https://www.cat.com/en_US.html">House Construction Group</Link></p>
+                    </Element>
+                );
+            }
         }
+
         return content;
         /*return query.map((item) => (
             <Element key={item._id}>
