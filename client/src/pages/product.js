@@ -13,8 +13,8 @@ const Product = () => {
      const [options, setOptions] = useState('');
      const [price, setPrice] = useState('');
      const [images, setImages] = useState('');
-     const [mainImage, setMainImage] = useState('');
      const [dataReceived, setDataReceived] = useState(false);
+     const [priceIndex, setPriceIndex] = useState(0);
    
      useEffect(() => {
      const requestOptions = {
@@ -27,13 +27,12 @@ const Product = () => {
           setStructureInfo(data);
           setDataReceived(true);
           setOptions([data.custom_options[0], data.custom_options[1], data.custom_options[2], data.custom_options[3]]);
-          setPrice(data.price[0]);
+          setPrice(data.price[priceIndex]);
           let items = [];
           for(let i = 0; i < data.images.length; i++){
                items.push({original: data.images[i]});
           }
           setImages(items);
-          setMainImage(data.images[0]);
         }).catch((error) => {
           console.error("Error fetching data:", error);
           setStructureInfo(error.message);
@@ -44,15 +43,28 @@ const Product = () => {
     function createDropDown(){
          let items = [];
          for(let i = 0; i < options.length; i++){
-              items.push(<DropdownItem text={options[i]} />);
+              items.push(DropdownItem(options[i], i));
           }
           return items;
      }
+
+     
+     function DropdownItem(text, index) {
+     return (
+         <li className = 'dropdownItem'>
+             <button class="dropdownItemButton" onClick={() => OnOptionClick(index)}> {text} </button>
+         </li>
+     );
+   }
     // var images = structureInfo.images[0];
      //images = images.split("https").map(x => {return "https" + x}).slice(1);
 
      const RedirectButton = () => {
           return <button>Text</button>
+     }
+
+     const OnOptionClick = (index) => {
+          setPriceIndex(index);
      }
     
      if(!dataReceived)
@@ -88,7 +100,7 @@ const Product = () => {
                  </div>
              </div>
              <h1 id = "p1">Price ${price}  </h1>
-             <button class ="cartbut"><Link to={`/cart?=${structureInfo.cart}`} component={RedirectButton}>Add to cart</Link></button>
+             <button class ="cartbut"><Link to={`/cart?=${price}`} component={RedirectButton}>Add to cart</Link></button>
              <h1 id="prostuff">From the Designer:</h1>
              <p id="prodisc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sem libero, fringilla in bibendum ut, iaculis sed nunc. Duis quam nunc, placerat eget maximus et, laoreet quis massa. Duis porta congue hendrerit. Nam condimentum tempus ligula, a sagittis libero. Nullam hendrerit velit ac justo ultrices, quis faucibus nulla vehicula. Morbi ornare mi ac odio suscipit dictum. Aenean vel pellentesque dolor. Suspendisse potenti. Fusce ac sagittis orci. Aenean eget tristique sem. Ut vitae mauris augue.</p>
      </div>
@@ -96,12 +108,5 @@ const Product = () => {
      );
 };
 
-function DropdownItem(props) {
-  return (
-      <li className = 'dropdownItem'>
-          <a> {props.text} </a>
-      </li>
-  );
-}
 
 export default Product;

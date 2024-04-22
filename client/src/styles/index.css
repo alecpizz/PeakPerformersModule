@@ -52,6 +52,17 @@ a {
     transition: var(--speed);
 }
 
+.dropdownItemButton{
+     background: none;
+     border: none;
+     color: black;
+}
+
+.dropdownItemButton:hover{
+     background: none;
+     text-decoration: underline;
+}
+
 .dropdown-menu.active{
     opacity: 1;
     visibility: visible;
@@ -106,6 +117,12 @@ a {
     margin-left: 1.8%;
     display:inline;
  }
+
+#p1:hover{
+     margin-left: 1.8%;
+     display:inline;
+     text-decoration:underline;
+}
 
  #p2 {
     margin-left: 1.8%;
