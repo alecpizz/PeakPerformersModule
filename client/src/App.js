@@ -12,7 +12,7 @@ import SignUp from "./pages/signup";
 import Contact from "./pages/contact";
 import PageFramework from "./pages/framework";
 import Product from "./pages/product";
-import Catalog from "./pages/catalog/catalog";
+import Catalog from "./pages/catalog";
 
 function App() {
      return (

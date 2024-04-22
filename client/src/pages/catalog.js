@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
-import { CatalogPage, Search, Tags, Results, Element, Link, Img, NumResults, Footer } from "./catalogElements";
-import SearchBar from '../../components/SearchBar';
+import { CatalogPage, Search, Tags, Results, Element, Link, Img, NumResults, Footer } from "./../components/catalogElements";
+import SearchBar from './../components/SearchBar';
 
 const Catalog = () => {
     //const initialMyArray = JSON.parse(localStorage.getItem("myArray")) || ['a', 'b', 'c', 'd', 'e'];
