@@ -1,6 +1,6 @@
 import React from "react";
 import { Nav, NavLink, NavMenu, Img } from "./NavbarElements";
-import caterpillarLogo from './caterpillar_logo.png';
+import caterpillarLogo from '../assets/caterpillar_logo.png'
 
 const Navbar = () => {
     return (
