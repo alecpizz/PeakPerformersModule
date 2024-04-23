@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import Rating from "../components/Rating";
+import "../styles/Rating.css";
 import { Link, useParams } from "react-router-dom";
 import ReactImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
@@ -83,11 +85,7 @@ const Product = () => {
                <Link to={`/seller?=${structureInfo.user_id}`} component={RedirectButton} class="hyperlink">Click here to see more structures by the creator</Link>
                <div class="card">
         <h3 id="p2">Rating: </h3>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
+        <Rating></Rating>
     </div>
              <div className='menu-container'>
                  <div className='menu-trigger' onClick={() => {setOpen(!open) } }>
