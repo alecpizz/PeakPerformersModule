@@ -62,7 +62,7 @@ module.exports = {
           $or: [
             { structure_id: Number(reqBody) },
             { structure_type: reqBody },
-            { user_id: reqBody },
+            { user_id: Number(reqBody) },
             { tags: reqBody }
           ]
       }).toArray();
