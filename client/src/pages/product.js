@@ -101,8 +101,11 @@ const Product = () => {
              </div>
              <h1 id = "p2">Price ${price}  </h1>
              <button class ="cartbut"><Link to={`/cart?=${price}`} component={RedirectButton}>Add to cart</Link></button>
-             <h1 id="prostuff">From the Designer:</h1>
-             <p id="prodisc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sem libero, fringilla in bibendum ut, iaculis sed nunc. Duis quam nunc, placerat eget maximus et, laoreet quis massa. Duis porta congue hendrerit. Nam condimentum tempus ligula, a sagittis libero. Nullam hendrerit velit ac justo ultrices, quis faucibus nulla vehicula. Morbi ornare mi ac odio suscipit dictum. Aenean vel pellentesque dolor. Suspendisse potenti. Fusce ac sagittis orci. Aenean eget tristique sem. Ut vitae mauris augue.</p>
+             <div style={{ width: "50%" }}>
+               <h1 id="prostuff">From the Designer:</h1>
+               <p id="prodisc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sem libero, fringilla in bibendum ut, iaculis sed nunc. Duis quam nunc, placerat eget maximus et, laoreet quis massa. Duis porta congue hendrerit. Nam condimentum tempus ligula, a sagittis libero. Nullam hendrerit velit ac justo ultrices, quis faucibus nulla vehicula. Morbi ornare mi ac odio suscipit dictum. Aenean vel pellentesque dolor. Suspendisse potenti. Fusce ac sagittis orci. Aenean eget tristique sem. Ut vitae mauris augue.</p>
+             </div>
+             
      </div>
 
      );
